@@ -9,7 +9,7 @@ human-readable reports.
 The system extracts text and images, filters noise, and uses a Large
 Language Model (LLM) to generate meaningful insights.
 
-------------------------------------------------------------------------
+-------------------------------------------------------------------------
 
 ## Key Features
 
