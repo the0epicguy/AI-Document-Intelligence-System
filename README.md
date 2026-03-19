@@ -30,8 +30,8 @@ Analysis (LLM) ↓ Structured Report Generation
 ------------------------------------------------------------------------
 
 ## Project Structure
-
-```AI Document Intelligence System/
+```
+AI Document Intelligence System/
 │
 ├── data/                      # Input PDF files
 │   ├── input.pdf
@@ -57,7 +57,7 @@ Analysis (LLM) ↓ Structured Report Generation
 
 ## Setup
 
-pip install -r requirements.txt
+```pip install -r requirements.txt```
 
 Create a .env file:
 
@@ -67,13 +67,13 @@ GROQ_API_KEY=your_api_key_here
 
 ## Run
 
-python main.py
+```python main.py```
 
 ------------------------------------------------------------------------
 
 ## Output
 
-output/final_report.html
+```output/final_report.html```
 
 ------------------------------------------------------------------------
 
