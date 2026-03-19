@@ -31,10 +31,26 @@ Analysis (LLM) ↓ Structured Report Generation
 
 ## Project Structure
 
-Urbanroof/ ├── data/ ├── output/ │ ├── images/ │ ├── final_report.md │
-└── final_report.html ├── src/ │ ├── document_parser.py │ ├──
-AI_engine.py │ └── ddr_generator.py ├── main.py ├── requirements.txt └──
-README.md
+AI Document Intelligence System/
+│
+├── data/                      # Input PDF files
+│   ├── input.pdf
+│   └── (other PDFs...)
+│
+├── output/                    # Generated outputs
+│   ├── images/                # Extracted & filtered images
+│   ├── final_report.md        # Markdown report
+│   └── final_report.html      # Final formatted report
+│
+├── src/                       # Core source code
+│   ├── document_parser.py     # PDF text + image extraction
+│   ├── AI_engine.py           # LLM-based analysis
+│   └── ddr_generator.py       # Report generation & formatting
+│
+├── main.py                    # Entry point
+├── requirements.txt           # Dependencies
+├── README.md                  # Project documentation
+└── .gitignore                 # Ignored files
 
 ------------------------------------------------------------------------
 
