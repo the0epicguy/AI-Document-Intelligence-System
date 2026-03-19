@@ -31,7 +31,7 @@ Analysis (LLM) ↓ Structured Report Generation
 
 ## Project Structure
 
-AI Document Intelligence System/
+```AI Document Intelligence System/
 │
 ├── data/                      # Input PDF files
 │   ├── input.pdf
@@ -51,6 +51,7 @@ AI Document Intelligence System/
 ├── requirements.txt           # Dependencies
 ├── README.md                  # Project documentation
 └── .gitignore                 # Ignored files
+```
 
 ------------------------------------------------------------------------
 
