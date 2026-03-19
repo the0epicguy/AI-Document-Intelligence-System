@@ -3,4 +3,4 @@ groq
 langchain
 python-dotenv
 markdown
-reportlab
+reportla
