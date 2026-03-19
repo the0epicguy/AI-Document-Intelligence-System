@@ -46,3 +46,15 @@ Thumbs.db
 # -------------------------
 *.tmp
 *.temp
+
+# -------------------------
+# PDFs to Ignore
+# -------------------------
+Main DDR.pdf
+Sample Report.pdf
+Thermal Images.pdf
+
+# -------------------------
+# codes to Ignore
+# -------------------------
+test.py

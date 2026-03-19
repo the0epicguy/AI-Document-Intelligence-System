@@ -1,45 +1,68 @@
-from src.pdf_parser import extract_pdf_content
-from src.llm_analyzer import generate_ddr_report
-from src.ddr_generator import save_ddr_report
+import os
+from src.document_parser import extract_pdf_content
+from src.AI_engine import generate_document_report
+from src.report_builder import save_document_report
 
 
 def main():
 
-    print("Starting DDR generation system...\n")
+    print("Starting AI Document Analysis System...\n")
 
-    inspection_path = "data/Sample Report.pdf"
-    thermal_path = "data/Thermal Images.pdf"
+    pdf_folder = "data/"
 
-    print("Step 1: Extracting text and images from PDFs...")
+    all_text = ""
+    all_images = []
 
-    inspection_text, inspection_images = extract_pdf_content(
-        inspection_path, "output/inspection_images"
-    )
+    # Safety check
+    if not os.path.exists(pdf_folder):
+        print("Error: 'data/' folder not found.")
+        return
 
-    thermal_text, thermal_images = extract_pdf_content(
-        thermal_path, "output/thermal_images"
-    )
+    print("Step 1: Extracting text and images from all PDFs...\n")
 
-    # Optional: limit text length for LLM
-    inspection_text = inspection_text[:12000]
-    thermal_text = thermal_text[:12000]
+    found_pdf = False
 
-    print("PDF text and image extraction complete.\n")
+    for file in os.listdir(pdf_folder):
+
+        if file.lower().endswith(".pdf"):
+            found_pdf = True
+
+            pdf_path = os.path.join(pdf_folder, file)
+
+            print(f"Processing: {file}")
+
+            try:
+                text, images = extract_pdf_content(pdf_path, "output/images")
+
+                all_text += text + "\n"
+                all_images.extend(images)
+
+            except Exception as e:
+                print(f"Error processing {file}: {e}")
+
+    if not found_pdf:
+        print("No PDF files found in 'data/' folder.")
+        return
+
+    # Limit text size for LLM
+    all_text = all_text[:12000]
+
+    print("\nPDF extraction complete.")
+    print(f"Total text length: {len(all_text)} characters")
+    print(f"Total images extracted: {len(all_images)}\n")
 
     print("Step 2: Sending data to AI model...")
 
-    report = generate_ddr_report(
-        inspection_text,
-        thermal_text,
-        inspection_images,
-        thermal_images
+    report = generate_document_report(
+        all_text,
+        all_images
     )
 
     print("AI report generation complete.\n")
 
-    print("Step 3: Saving DDR report...")
+    print("Step 3: Saving report...")
 
-    save_ddr_report(report)
+    save_document_report(report)
 
     print("\nProcess completed successfully.")
 
